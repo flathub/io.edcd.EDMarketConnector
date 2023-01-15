@@ -22,21 +22,19 @@ modules:
   - name: edmarketconnector
     buildsystem: simple
     build-commands:
-      - mkdir edmarketconnector
-      - tar xzfv edmarketconnector.tar.gz --directory=edmarketconnector/ --strip-components=1
-      - rm -rf edmarketconnector/tests edmarketconnector/img
+      - rm -rf ${FLATPAK_BUILDER_BUILDDIR}/tests ${FLATPAK_BUILDER_BUILDDIR}/img
       - install -dm755 ${FLATPAK_DEST}/edmarketconnector
       - install -dm755 ${FLATPAK_DEST}/bin
-      - cp -r edmarketconnector/* ${FLATPAK_DEST}/edmarketconnector
+      - cp -r ${FLATPAK_BUILDER_BUILDDIR}/* ${FLATPAK_DEST}/edmarketconnector
       - install edmarketconnector.sh ${FLATPAK_DEST}/bin/edmarketconnector
       - install -t ${FLATPAK_DEST}/share/appdata/ -Dm644 io.edcd.EDMarketConnector.appdata.xml
       - install -t ${FLATPAK_DEST}/share/applications/ -Dm644 io.edcd.EDMarketConnector.desktop
-      - install -Dm644 edmarketconnector/EDMarketConnector.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
+      - install -Dm644 ${FLATPAK_BUILDER_BUILDDIR}/EDMarketConnector.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
     sources:
-      - type: file
-        url: https://github.com/EDCD/EDMarketConnector/archive/refs/tags/Release/5.7.0.tar.gz
-        sha256: 6c07fc582f6f619fb3ca1ed5cc07c84dca2e3f510f54ae602efaba8ce4b52f48
-        dest-filename: edmarketconnector.tar.gz
+      - type: git
+        url: https://github.com/EDCD/EDMarketConnector
+        tag: Release/5.7.0
+        disable-shallow-clone: true
       - type: file
         path: io.edcd.EDMarketConnector.desktop
       - type: file
