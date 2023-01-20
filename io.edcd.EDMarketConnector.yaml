@@ -35,6 +35,9 @@ modules:
         url: https://github.com/EDCD/EDMarketConnector
         tag: Release/5.7.0
         disable-shallow-clone: true
+        x-checker-data:
+          type: git
+          tag-pattern: 'Release\/([\d.]+)$'
       - type: file
         path: io.edcd.EDMarketConnector.desktop
       - type: file
