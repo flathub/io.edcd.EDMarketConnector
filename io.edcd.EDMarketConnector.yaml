@@ -27,19 +27,17 @@ modules:
       - install -dm755 ${FLATPAK_DEST}/bin
       - cp -r ${FLATPAK_BUILDER_BUILDDIR}/* ${FLATPAK_DEST}/edmarketconnector
       - install edmarketconnector.sh ${FLATPAK_DEST}/bin/edmarketconnector
-      - install -t ${FLATPAK_DEST}/share/appdata/ -Dm644 io.edcd.EDMarketConnector.appdata.xml
-      - install -t ${FLATPAK_DEST}/share/applications/ -Dm644 io.edcd.EDMarketConnector.desktop
-      - install -Dm644 ${FLATPAK_BUILDER_BUILDDIR}/EDMarketConnector.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
+      - install -t ${FLATPAK_DEST}/share/appdata/ -Dm644 ${FLATPAK_ID}.appdata.xml
+      - install -t ${FLATPAK_DEST}/share/applications/ -Dm644 ${FLATPAK_ID}.desktop
+      - install -t ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/ -Dm644 ${FLATPAK_ID}.png
     sources:
       - type: git
         url: https://github.com/EDCD/EDMarketConnector
-        tag: Release/5.7.0
+        tag: Release/5.8.0
         disable-shallow-clone: true
         x-checker-data:
           type: git
           tag-pattern: 'Release\/([\d.]+)$'
-      - type: file
-        path: io.edcd.EDMarketConnector.desktop
       - type: file
         path: io.edcd.EDMarketConnector.appdata.xml
       - type: file
