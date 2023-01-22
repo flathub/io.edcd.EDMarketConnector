@@ -8,12 +8,13 @@ finish-args:
   - --share=ipc
   - --device=dri
   - --share=network
-  - --filesystem=~/.steam/steam/steamapps/compatdata/359320/pfx/drive_c/users/steamuser/Saved\ Games/Frontier\ Developments/Elite\ Dangerous
+  - --filesystem=~/.steam/steam/steamapps/compatdata/359320/pfx/drive_c/users/steamuser/Saved\
+    Games/Frontier\ Developments/Elite\ Dangerous
 cleanup:
-  - '/man'
-  - '/include'
-  - '/share/man'
-  - '/lib/pkgconfig'
+  - /man
+  - /include
+  - /share/man
+  - /lib/pkgconfig
 modules:
   - python3-requirements.yaml
 
@@ -33,11 +34,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/EDCD/EDMarketConnector
-        tag: Release/5.8.0
+        tag: Release/5.8.1
         disable-shallow-clone: true
         x-checker-data:
           type: git
-          tag-pattern: 'Release\/([\d.]+)$'
+          tag-pattern: Release\/([\d.]+)$
+        commit: d81c93c4ac87396a249dbbe233f99f2d5970b017
       - type: file
         path: io.edcd.EDMarketConnector.appdata.xml
       - type: file
