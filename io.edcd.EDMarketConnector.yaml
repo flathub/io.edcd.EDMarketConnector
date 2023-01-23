@@ -33,7 +33,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/EDCD/EDMarketConnector
-        tag: Release/5.8.0
+        tag: Release/5.8.1
         disable-shallow-clone: true
         x-checker-data:
           type: git
