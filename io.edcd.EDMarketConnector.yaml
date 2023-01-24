@@ -36,8 +36,11 @@ modules:
         x-checker-data:
           type: json
           url: "https://api.github.com/repos/EDCD/EDMarketConnector/releases/latest"
-          version-query: ".tag_name | sub(\"^Release\/\"; \"\")"
+          tag-query: ".tag_name"
+          version-query: "$tag | sub(\"^Release\/\"; \"\")"
           url-query: ".assets[] | select(.name==\"EDMarketConnector-release-\" + $version + \".tar.gz\") | .browser_download_url"
+          is-main-source: true
+          timestamp-query: ".published_at"
       - type: file
         path: io.edcd.EDMarketConnector.appdata.xml
       - type: file
