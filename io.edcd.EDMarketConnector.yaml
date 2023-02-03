@@ -22,7 +22,6 @@ modules:
   - name: edmarketconnector
     buildsystem: simple
     build-commands:
-      - rm -rf ${FLATPAK_BUILDER_BUILDDIR}/tests ${FLATPAK_BUILDER_BUILDDIR}/img
       - install -dm755 ${FLATPAK_DEST}/edmarketconnector
       - install -dm755 ${FLATPAK_DEST}/bin
       - cp -r ${FLATPAK_BUILDER_BUILDDIR}/* ${FLATPAK_DEST}/edmarketconnector
@@ -31,13 +30,17 @@ modules:
       - install -t ${FLATPAK_DEST}/share/applications/ -Dm644 ${FLATPAK_ID}.desktop
       - install -t ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/ -Dm644 ${FLATPAK_ID}.png
     sources:
-      - type: git
-        url: https://github.com/EDCD/EDMarketConnector
-        tag: Release/5.8.1
-        disable-shallow-clone: true
+      - type: archive
+        url: https://github.com/EDCD/EDMarketConnector/releases/download/Release/5.8.1/EDMarketConnector-release-5.8.1.tar.gz
+        sha256: 2f4d66a53e2b782c0794a32442823bf2093e2006cebf813089e9a319db106e90
         x-checker-data:
-          type: git
-          tag-pattern: 'Release\/([\d.]+)$'
+          type: json
+          url: "https://api.github.com/repos/EDCD/EDMarketConnector/releases/latest"
+          tag-query: ".tag_name"
+          version-query: "$tag | sub(\"^Release\/\"; \"\")"
+          url-query: ".assets[] | select(.name==\"EDMarketConnector-release-\" + $version + \".tar.gz\") | .browser_download_url"
+          is-main-source: true
+          timestamp-query: ".published_at"
       - type: file
         path: io.edcd.EDMarketConnector.appdata.xml
       - type: file
