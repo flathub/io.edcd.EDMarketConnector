@@ -1,3 +1,3 @@
 #!/bin/sh
 
-python3 /app/edmarketconnector/EDMarketConnector.py
+cd /app/edmarketconnector; python3 EDMarketConnector.py
