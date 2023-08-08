@@ -8,12 +8,13 @@ finish-args:
   - --share=ipc
   - --device=dri
   - --share=network
-  - --filesystem=~/.steam/steam/steamapps/compatdata/359320/pfx/drive_c/users/steamuser/Saved\ Games/Frontier\ Developments/Elite\ Dangerous
+  - --filesystem=~/.steam/steam/steamapps/compatdata/359320/pfx/drive_c/users/steamuser/Saved\
+    Games/Frontier\ Developments/Elite\ Dangerous
 cleanup:
-  - '/man'
-  - '/include'
-  - '/share/man'
-  - '/lib/pkgconfig'
+  - /man
+  - /include
+  - /share/man
+  - /lib/pkgconfig
 modules:
   - python3-requirements.yaml
 
@@ -31,16 +32,17 @@ modules:
       - install -t ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/ -Dm644 ${FLATPAK_ID}.png
     sources:
       - type: archive
-        url: https://github.com/EDCD/EDMarketConnector/releases/download/Release/5.8.1/EDMarketConnector-release-5.8.1.tar.gz
-        sha256: 2f4d66a53e2b782c0794a32442823bf2093e2006cebf813089e9a319db106e90
+        url: https://github.com/EDCD/EDMarketConnector/releases/download/Release/5.9.4/EDMarketConnector-release-5.9.4.tar.gz
+        sha256: 622a1313b37583d5ac435c26f43dbed00e253829ec02815b06831eb88c1c075b
         x-checker-data:
           type: json
-          url: "https://api.github.com/repos/EDCD/EDMarketConnector/releases/latest"
-          tag-query: ".tag_name"
-          version-query: "$tag | sub(\"^Release\/\"; \"\")"
-          url-query: ".assets[] | select(.name==\"EDMarketConnector-release-\" + $version + \".tar.gz\") | .browser_download_url"
+          url: https://api.github.com/repos/EDCD/EDMarketConnector/releases/latest
+          tag-query: .tag_name
+          version-query: $tag | sub("^Release/"; "")
+          url-query: .assets[] | select(.name=="EDMarketConnector-release-" + $version
+            + ".tar.gz") | .browser_download_url
           is-main-source: true
-          timestamp-query: ".published_at"
+          timestamp-query: .published_at
       - type: file
         path: io.edcd.EDMarketConnector.appdata.xml
       - type: file
