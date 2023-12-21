@@ -10,6 +10,7 @@
     <project_license>GPL-2.0-only</project_license>
 
     <releases>
+        <release version="5.10.0" date="2023-12-21"/>
         <release version="5.9.5" date="2023-08-22"/>
         <release version="5.8.1" date="2023-01-22"/>
     </releases>
