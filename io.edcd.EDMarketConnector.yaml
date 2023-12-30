@@ -43,6 +43,8 @@ modules:
             + ".tar.gz") | .browser_download_url
           is-main-source: true
           timestamp-query: .published_at
+      - type: patch
+        path: fix-missing-git-exception.patch
       - type: file
         path: io.edcd.EDMarketConnector.appdata.xml
       - type: file

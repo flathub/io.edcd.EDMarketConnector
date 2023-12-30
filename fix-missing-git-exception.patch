@@ -1,0 +1,23 @@
+From 2e7c9ef38b8d44c3972fd0c0e88802f66ce1987e Mon Sep 17 00:00:00 2001
+From: David Sangrey <rixxan@hullseals.space>
+Date: Sat, 30 Dec 2023 11:31:36 -0500
+Subject: [PATCH] [2125] Updates Exception Check
+
+We removed a general exception check and didn't cover all edge cases here. Add back the proper edge case.
+---
+ config/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config/__init__.py b/config/__init__.py
+index 33d531e93..d3ba3d3d5 100644
+--- a/config/__init__.py
++++ b/config/__init__.py
+@@ -99,7 +99,7 @@ def git_shorthash_from_head() -> str:
+         )
+         out, err = git_cmd.communicate()
+ 
+-    except subprocess.CalledProcessError as e:
++    except (subprocess.CalledProcessError, FileNotFoundError) as e:
+         logger.info(f"Couldn't run git command for short hash: {e!r}")
+ 
+     else:
