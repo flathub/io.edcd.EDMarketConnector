@@ -33,3 +33,9 @@ Flatpak apps store their own data in different locations than a normal app on yo
   ```plain
   ~/.var/app/io.edcd.EDMarketConnector/data/EDMarketConnector/plugins/
   ```
+
+- Debug Logs (user ID `1000` might vary):  
+
+  ```plain
+  /run/user/1000/app/io.edcd.EDMarketConnector/EDMarketConnector
+  ```
