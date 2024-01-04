@@ -26,6 +26,7 @@ modules:
       - install -dm755 ${FLATPAK_DEST}/edmarketconnector
       - install -dm755 ${FLATPAK_DEST}/bin
       - cp -r ${FLATPAK_BUILDER_BUILDDIR}/* ${FLATPAK_DEST}/edmarketconnector
+      - cp ${FLATPAK_BUILDER_BUILDDIR}/.gitversion ${FLATPAK_DEST}/edmarketconnector
       - install edmarketconnector.sh ${FLATPAK_DEST}/bin/edmarketconnector
       - install -t ${FLATPAK_DEST}/share/appdata/ -Dm644 ${FLATPAK_ID}.appdata.xml
       - install -t ${FLATPAK_DEST}/share/applications/ -Dm644 ${FLATPAK_ID}.desktop
