@@ -26,14 +26,15 @@ modules:
       - install -dm755 ${FLATPAK_DEST}/edmarketconnector
       - install -dm755 ${FLATPAK_DEST}/bin
       - cp -r ${FLATPAK_BUILDER_BUILDDIR}/* ${FLATPAK_DEST}/edmarketconnector
+      - cp ${FLATPAK_BUILDER_BUILDDIR}/.gitversion ${FLATPAK_DEST}/edmarketconnector
       - install edmarketconnector.sh ${FLATPAK_DEST}/bin/edmarketconnector
       - install -t ${FLATPAK_DEST}/share/appdata/ -Dm644 ${FLATPAK_ID}.appdata.xml
       - install -t ${FLATPAK_DEST}/share/applications/ -Dm644 ${FLATPAK_ID}.desktop
       - install -t ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/ -Dm644 ${FLATPAK_ID}.png
     sources:
       - type: archive
-        url: https://github.com/EDCD/EDMarketConnector/releases/download/Release/5.10.0/EDMarketConnector-release-5.10.0.tar.gz
-        sha256: beaad1d611c5ff3c54fe7e471084b38f2acd67697caf5231c1c558e4688153a2
+        url: https://github.com/EDCD/EDMarketConnector/releases/download/Release/5.10.1/EDMarketConnector-release-5.10.1.tar.gz
+        sha256: c52e1cc1f0ae3ac00ba3774cc901293ad09a0267c258f314b70f1d0266ef9fdd
         x-checker-data:
           type: json
           url: https://api.github.com/repos/EDCD/EDMarketConnector/releases/latest
@@ -43,8 +44,6 @@ modules:
             + ".tar.gz") | .browser_download_url
           is-main-source: true
           timestamp-query: .published_at
-      - type: patch
-        path: fix-missing-git-exception.patch
       - type: file
         path: io.edcd.EDMarketConnector.appdata.xml
       - type: file
