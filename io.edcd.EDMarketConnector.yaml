@@ -35,8 +35,8 @@ modules:
       - install -t ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/ -Dm644 ${FLATPAK_ID}.png
     sources:
       - type: archive
-        url: https://github.com/EDCD/EDMarketConnector/releases/download/Release/5.10.2/EDMarketConnector-release-5.10.2.tar.gz
-        sha256: 16c2111ff8c9935e1d723d824628884da09e98bc69765612e39c942b300213d7
+        url: https://github.com/EDCD/EDMarketConnector/releases/download/Release/5.10.3/EDMarketConnector-release-5.10.3.tar.gz
+        sha256: a1f07517695bccd6a30726e602f06049d733ec8cf896bc01b030a9f0b897391f
         x-checker-data:
           type: json
           url: https://api.github.com/repos/EDCD/EDMarketConnector/releases/latest
