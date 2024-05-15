@@ -19,8 +19,12 @@ modules:
   - name: tk8.6
     sources:
       - type: archive
-        url: https://core.tcl-lang.org/tk/tarball/a2234d91/tk-a2234d91.tar.gz
-        sha256: 500c4c4dd6c3c4af5d54dafc67b470bb0194bded3fe0addb2316a4c53d23cfc5
+        url: https://prdownloads.sourceforge.net/tcl/tk8.6.14-src.tar.gz
+        sha256: 8ffdb720f47a6ca6107eac2dd877e30b0ef7fac14f3a84ebbd0b3612cee41a94
+      - type: patch
+        path: branch.patch
+        strip-components: 0
+        options: ["-R"]
     subdir: unix
     post-install:
       - chmod +w ${FLATPAK_DEST}/lib/libtk8.6.so
