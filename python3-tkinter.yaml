@@ -6,21 +6,21 @@ build-commands:
 sources:
   - type: git
     url: https://github.com/iwalton3/tkinter-standalone
-    commit: 20950173c51b7d4b67cfb5d765d41c2600f9bee3
+    commit: 88aa05075d90d393a29a484bce676e237d311082
 modules:
   - name: tcl8.6
     sources:
       - type: archive
-        url: https://prdownloads.sourceforge.net/tcl/tcl8.6.13-src.tar.gz
-        sha256: 43a1fae7412f61ff11de2cfd05d28cfc3a73762f354a417c62370a54e2caf066
+        url: https://prdownloads.sourceforge.net/tcl/tcl8.6.14-src.tar.gz
+        sha256: 5880225babf7954c58d4fb0f5cf6279104ce1cd6aa9b71e9a6322540e1c4de66
     subdir: unix
     post-install:
       - chmod +w ${FLATPAK_DEST}/lib/libtcl8.6.so
   - name: tk8.6
     sources:
       - type: archive
-        url: https://prdownloads.sourceforge.net/tcl/tk8.6.13-src.tar.gz
-        sha256: 2e65fa069a23365440a3c56c556b8673b5e32a283800d8d9b257e3f584ce0675
+        url: https://core.tcl-lang.org/tk/tarball/a2234d91/tk-a2234d91.tar.gz
+        sha256: 500c4c4dd6c3c4af5d54dafc67b470bb0194bded3fe0addb2316a4c53d23cfc5
     subdir: unix
     post-install:
       - chmod +w ${FLATPAK_DEST}/lib/libtk8.6.so
