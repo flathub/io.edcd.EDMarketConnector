@@ -1,4 +1,4 @@
-# Generated with flatpak-pip-generator -r requirements.txt --yaml
+# Generated with flatpak-pip-generator --requirements-file=requirements.txt --yaml --checker-data
 build-commands: []
 buildsystem: simple
 modules:
@@ -11,18 +11,37 @@ modules:
       - type: file
         url: https://files.pythonhosted.org/packages/5b/11/1e78951465b4a225519b8c3ad29769c49e0d8d157a070f681d5b6d64737f/certifi-2024.6.2-py3-none-any.whl
         sha256: ddc6c8ce995e6987e7faf5e3f1b02b302836a0e5d98ece18392cb1a36c72ad56
+        x-checker-data:
+          name: certifi
+          packagetype: bdist_wheel
+          type: pypi
       - type: file
         url: https://files.pythonhosted.org/packages/63/09/c1bc53dab74b1816a00d8d030de5bf98f724c52c1635e07681d312f20be8/charset-normalizer-3.3.2.tar.gz
         sha256: f30c3cb33b24454a82faecaf01b19c18562b1e89558fb6c56de4d9118a032fd5
+        x-checker-data:
+          name: charset-normalizer
+          type: pypi
       - type: file
         url: https://files.pythonhosted.org/packages/e5/3e/741d8c82801c347547f8a2a06aa57dbb1992be9e948df2ea0eda2c8b79e8/idna-3.7-py3-none-any.whl
         sha256: 82fee1fc78add43492d3a1898bfa6d8a904cc97d8427f683ed8e798d07761aa0
+        x-checker-data:
+          name: idna
+          packagetype: bdist_wheel
+          type: pypi
       - type: file
         url: https://files.pythonhosted.org/packages/f9/9b/335f9764261e915ed497fcdeb11df5dfd6f7bf257d4a6a2a686d80da4d54/requests-2.32.3-py3-none-any.whl
         sha256: 70761cfe03c773ceb22aa2f671b4757976145175cdfca038c02654d061d6dcc6
+        x-checker-data:
+          name: requests
+          packagetype: bdist_wheel
+          type: pypi
       - type: file
         url: https://files.pythonhosted.org/packages/a2/73/a68704750a7679d0b6d3ad7aa8d4da8e14e151ae82e6fee774e6e0d05ec8/urllib3-2.2.1-py3-none-any.whl
         sha256: 450b20ec296a467077128bff42b73080516e71b56ff59a60a02bef2232c4fa9d
+        x-checker-data:
+          name: urllib3
+          packagetype: bdist_wheel
+          type: pypi
   - name: python3-pillow
     buildsystem: simple
     build-commands:
@@ -32,6 +51,9 @@ modules:
       - type: file
         url: https://files.pythonhosted.org/packages/ef/43/c50c17c5f7d438e836c169e343695534c38c77f60e7c90389bd77981bc21/pillow-10.3.0.tar.gz
         sha256: 9d2455fbf44c914840c793e89aa82d0e1763a14253a000743719ae5946814b2d
+        x-checker-data:
+          name: pillow
+          type: pypi
   - name: python3-watchdog
     buildsystem: simple
     build-commands:
@@ -41,6 +63,9 @@ modules:
       - type: file
         url: https://files.pythonhosted.org/packages/cd/3c/43eeaa9ea17a2657d639aa3827beaa77042809410f86fb76f0d0ea6a2102/watchdog-4.0.0.tar.gz
         sha256: e3e7065cbdabe6183ab82199d7a4f6b3ba0a438c5a512a68559846ccb76a78ec
+        x-checker-data:
+          name: watchdog
+          type: pypi
   - name: python3-semantic-version
     buildsystem: simple
     build-commands:
@@ -50,4 +75,8 @@ modules:
       - type: file
         url: https://files.pythonhosted.org/packages/6a/23/8146aad7d88f4fcb3a6218f41a60f6c2d4e3a72de72da1825dc7c8f7877c/semantic_version-2.10.0-py2.py3-none-any.whl
         sha256: de78a3b8e0feda74cabc54aab2da702113e33ac9d9eb9d2389bcf1f58b7d9177
+        x-checker-data:
+          name: semantic_version
+          packagetype: bdist_wheel
+          type: pypi
 name: python3-requirements
