@@ -6,7 +6,7 @@ build-commands:
 sources:
   - type: git
     url: https://github.com/iwalton3/tkinter-standalone
-    commit: 20950173c51b7d4b67cfb5d765d41c2600f9bee3
+    commit: 4f5cfe3cdd1f58cd4e136fd66d4e5e27d21d820b
 modules:
   - name: tcl8.6
     sources:
