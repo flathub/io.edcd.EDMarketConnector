@@ -11,16 +11,16 @@ modules:
   - name: tcl8.6
     sources:
       - type: archive
-        url: https://prdownloads.sourceforge.net/tcl/tcl8.6.13-src.tar.gz
-        sha256: 43a1fae7412f61ff11de2cfd05d28cfc3a73762f354a417c62370a54e2caf066
+        url: https://prdownloads.sourceforge.net/tcl/tcl8.6.15-src.tar.gz
+        sha256: 861e159753f2e2fbd6ec1484103715b0be56be3357522b858d3cbb5f893ffef1 
     subdir: unix
     post-install:
       - chmod +w ${FLATPAK_DEST}/lib/libtcl8.6.so
   - name: tk8.6
     sources:
       - type: archive
-        url: https://prdownloads.sourceforge.net/tcl/tk8.6.13-src.tar.gz
-        sha256: 2e65fa069a23365440a3c56c556b8673b5e32a283800d8d9b257e3f584ce0675
+        url: https://prdownloads.sourceforge.net/tcl/tk8.6.15-src.tar.gz
+        sha256: 550969f35379f952b3020f3ab7b9dd5bfd11c1ef7c9b7c6a75f5c49aca793fec
     subdir: unix
     post-install:
       - chmod +w ${FLATPAK_DEST}/lib/libtk8.6.so
