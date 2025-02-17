@@ -1,6 +1,6 @@
 app-id: io.edcd.EDMarketConnector
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '24.08'
 command: edmarketconnector
 sdk: org.freedesktop.Sdk
 finish-args:
@@ -35,8 +35,8 @@ modules:
       - install -t ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/ -Dm644 ${FLATPAK_ID}.png
     sources:
       - type: archive
-        url: https://github.com/EDCD/EDMarketConnector/releases/download/Release/5.10.6/EDMarketConnector-release-5.10.6.tar.gz
-        sha256: 4a0d7836aa082b46da51ce1e1c52a56f6c34cd27c589e2c2a31964850a08fcca
+        url: https://github.com/EDCD/EDMarketConnector/releases/download/Release/5.12.2/EDMarketConnector-release-5.12.2.tar.gz
+        sha256: 12e207b0c0df5419d69bf4eae7a5062afac4095df470aab1cf40ae71d5d6994c
         x-checker-data:
           type: json
           url: https://api.github.com/repos/EDCD/EDMarketConnector/releases/latest
