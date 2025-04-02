@@ -1,0 +1,129 @@
+Index: tests/font.test
+==================================================================
+--- tests/font.test
++++ tests/font.test
+@@ -2337,18 +2337,19 @@
+     font actual -xyz-?-*-*-*-*-*-*-*-*-*-*-*-*
+     lindex [font actual -xyz-times-*-*-*-*-*-*-*-*-*-*-*-*] 1
+ } -result [font actual {times 0} -family]
+ 
+ 
+-test font-44.1 {TkFontGetPixels: size < 0} -constraints failsOnUbuntu -setup {
++test font-44.1 {TkFontGetPixels: size < 0} -setup {
+     set oldscale [tk scaling]
+ } -body {
++    set oldsize [expr {-(-12.0 / $oldscale)}]
+     tk scaling 0.5
+-    font actual {times -12} -size
++    expr {round([font actual {times -12} -size] / $oldscale * 0.5) - round($oldsize) == 0}
+ } -cleanup {
+     tk scaling $oldscale
+-} -result 24
++} -result 1
+ test font-44.2 {TkFontGetPoints: size >= 0} -constraints {noExceed haveTimes12Font} -setup {
+     set oldscale [tk scaling]
+ } -body {
+     tk scaling 0.5
+     font actual {times 12} -size
+
+Index: unix/tkUnixRFont.c
+==================================================================
+--- unix/tkUnixRFont.c
++++ unix/tkUnixRFont.c
+@@ -176,25 +176,26 @@
+  * 	Fill in TkFontAttributes from an XftFont.
+  */
+ 
+ static void
+ GetTkFontAttributes(
++    Tk_Window tkwin,
+     XftFont *ftFont,
+     TkFontAttributes *faPtr)
+ {
+     const char *family = "Unknown";
+     const char *const *familyPtr = &family;
+     int weight, slant, pxsize;
+     double size, ptsize;
+ 
+     (void) XftPatternGetString(ftFont->pattern, XFT_FAMILY, 0, familyPtr);
+-    if (XftPatternGetDouble(ftFont->pattern, XFT_SIZE, 0,
++    if (XftPatternGetDouble(ftFont->pattern, XFT_PIXEL_SIZE, 0,
++	    &ptsize) == XftResultMatch) {
++	size = -ptsize;
++    } else if (XftPatternGetDouble(ftFont->pattern, XFT_SIZE, 0,
+ 	    &ptsize) == XftResultMatch) {
+ 	size = ptsize;
+-    } else if (XftPatternGetDouble(ftFont->pattern, XFT_PIXEL_SIZE, 0,
+-	    &ptsize) == XftResultMatch) {
+-	size = -ptsize;
+     } else if (XftPatternGetInteger(ftFont->pattern, XFT_PIXEL_SIZE, 0,
+ 	    &pxsize) == XftResultMatch) {
+ 	size = (double)-pxsize;
+     } else {
+ 	size = 12.0;
+@@ -212,11 +213,11 @@
+     printf("family %s size %d weight %d slant %d\n",
+ 	    family, (int)size, weight, slant);
+ #endif /* DEBUG_FONTSEL */
+ 
+     faPtr->family = Tk_GetUid(family);
+-    faPtr->size = size;
++    faPtr->size = TkFontGetPoints(tkwin, size);
+     faPtr->weight = (weight > XFT_WEIGHT_MEDIUM) ? TK_FW_BOLD : TK_FW_NORMAL;
+     faPtr->slant = (slant > XFT_SLANT_ROMAN) ? TK_FS_ITALIC : TK_FS_ROMAN;
+     faPtr->underline = 0;
+     faPtr->overstrike = 0;
+ }
+@@ -348,11 +349,11 @@
+ 	FinishedWithFont(fontPtr);
+ 	ckfree(fontPtr);
+ 	return NULL;
+     }
+     fontPtr->font.fid = XLoadFont(Tk_Display(tkwin), "fixed");
+-    GetTkFontAttributes(ftFont, &fontPtr->font.fa);
++    GetTkFontAttributes(tkwin, ftFont, &fontPtr->font.fa);
+     GetTkFontMetrics(ftFont, &fontPtr->font.fm);
+     Tk_DeleteErrorHandler(handler);
+     if (errorFlag) {
+ 	FinishedWithFont(fontPtr);
+ 	ckfree(fontPtr);
+@@ -504,11 +505,11 @@
+ 	XftPatternAddString(pattern, XFT_FAMILY, faPtr->family);
+     }
+     if (faPtr->size > 0.0) {
+ 	XftPatternAddDouble(pattern, XFT_SIZE, faPtr->size);
+     } else if (faPtr->size < 0.0) {
+-	XftPatternAddDouble(pattern, XFT_SIZE, TkFontGetPoints(tkwin, faPtr->size));
++	XftPatternAddDouble(pattern, XFT_PIXEL_SIZE, -faPtr->size);
+     } else {
+ 	XftPatternAddDouble(pattern, XFT_SIZE, 12.0);
+     }
+     switch (faPtr->weight) {
+     case TK_FW_NORMAL:
+@@ -673,11 +674,11 @@
+  *----------------------------------------------------------------------
+  */
+ 
+ void
+ TkpGetFontAttrsForChar(
+-    TCL_UNUSED(Tk_Window),	/* Window on the font's display */
++    Tk_Window tkwin,		/* Window on the font's display */
+     Tk_Font tkfont,		/* Font to query */
+     int c,         		/* Character of interest */
+     TkFontAttributes *faPtr)	/* Output: Font attributes */
+ {
+     UnixFtFont *fontPtr = (UnixFtFont *) tkfont;
+@@ -685,11 +686,11 @@
+     FcChar32 ucs4 = (FcChar32) c;
+ 				/* UCS-4 character to map */
+     XftFont *ftFont = GetFont(fontPtr, ucs4, 0.0);
+ 				/* Actual font used to render the character */
+ 
+-    GetTkFontAttributes(ftFont, faPtr);
++    GetTkFontAttributes(tkwin, ftFont, faPtr);
+     faPtr->underline = fontPtr->font.fa.underline;
+     faPtr->overstrike = fontPtr->font.fa.overstrike;
+ }
+ 
+ int
+
