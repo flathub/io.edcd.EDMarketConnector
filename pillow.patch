@@ -1,0 +1,14 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index a3ff9723b..141f5729e 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -14,8 +14,7 @@ readme = "README.md"
+ keywords = [
+   "Imaging",
+ ]
+-license = "MIT-CMU"
+-license-files = [ "LICENSE" ]
++license = {text = "MIT-CMU"}
+ authors = [
+   { name = "Jeffrey A. Clark", email = "aclark@aclark.net" },
+ ]
