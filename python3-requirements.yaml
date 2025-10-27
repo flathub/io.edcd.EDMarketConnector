@@ -27,9 +27,9 @@ modules:
     buildsystem: simple
     build-commands:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "pybind11==3.0.1"
+        --prefix=${FLATPAK_DEST} "pybind11==3.0.1" --no-build-isolation
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "pillow==12.0.0"
+        --prefix=${FLATPAK_DEST} "pillow==12.0.0" --no-build-isolation
     sources:
       # Since pillow 12.0.0, pybind11 is a dependency that needs to be installed first
       - type: file
