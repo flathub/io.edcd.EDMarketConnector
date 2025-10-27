@@ -26,18 +26,11 @@ modules:
   - name: python3-pillow
     buildsystem: simple
     build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "pybind11==3.0.1" --no-build-isolation
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "pillow==12.0.0" --no-build-isolation
+      - pip3 install . --prefix=${FLATPAK_DEST}
     sources:
-      # Since pillow 12.0.0, pybind11 is a dependency that needs to be installed first
       - type: file
-        url: https://files.pythonhosted.org/packages/cd/8a/37362fc2b949d5f733a8b0f2ff51ba423914cabefe69f1d1b6aab710f5fe/pybind11-3.0.1-py3-none-any.whl
-        sha256: aa8f0aa6e0a94d3b64adfc38f560f33f15e589be2175e103c0a33c6bce55ee89
-      - type: file
-        url: https://files.pythonhosted.org/packages/5a/b0/cace85a1b0c9775a9f8f5d5423c8261c858760e2466c79b2dd184638b056/pillow-12.0.0.tar.gz
-        sha256: 87d4f8125c9988bfbed67af47dd7a953e2fc7b0cc1e7800ec6d2080d490bb353
+        url: https://github.com/python-pillow/Pillow/archive/refs/tags/12.0.0.tar.gz
+        sha256: 9d24d8c1197610e63eee5e5cfa60025e4aaaba3f5c3c592e9a62cdf734f0bb13
   - name: python3-watchdog
     buildsystem: simple
     build-commands:
