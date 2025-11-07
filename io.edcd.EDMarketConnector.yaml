@@ -17,6 +17,9 @@ cleanup:
   - /include
   - /share/man
   - /lib/pkgconfig
+  - /bin/tclsh9.0
+  - /bin/wish9.0
+  - /bin/sqlite3_analyzer
 modules:
   - python3-requirements.yaml
 
