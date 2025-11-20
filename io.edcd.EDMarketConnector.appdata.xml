@@ -73,9 +73,11 @@
     <screenshots>
         <screenshot type="default">
             <image>https://raw.githubusercontent.com/EDCD/EDMarketConnector/main/img/win_dark.png</image>
+            <caption>EDMarketConnector main window (dark theme)</caption>
         </screenshot>
         <screenshot>
             <image>https://raw.githubusercontent.com/EDCD/EDMarketConnector/main/img/UI-Athanasius-101-odyssey-docked-onfoot-cooled-down-l.png</image>
+            <caption>EDMarketConnector in use with Elite Dangerous Odyssey</caption>
         </screenshot>
     </screenshots>
 </component>
