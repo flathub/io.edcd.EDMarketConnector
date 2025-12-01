@@ -5,7 +5,6 @@ command: edmarketconnector
 sdk: org.freedesktop.Sdk
 finish-args:
   - --socket=x11
-  - --socket=wayland
   - --share=ipc
   - --device=dri
   - --share=network
@@ -17,6 +16,7 @@ cleanup:
   - /man
   - /include
   - /share/man
+  - /share/bash-completion
   - /lib/pkgconfig
 modules:
   - python3-requirements.yaml
@@ -24,11 +24,10 @@ modules:
   - python3-tkinter.yaml
 
   - name: wl-clipboard
-    buildsystem: simple
-    build-commands:
-      - meson setup build --prefix=/usr
-      - meson compile -C build
-      - DESTDIR=${FLATPAK_DEST} meson install -C build
+    buildsystem: meson
+    config-opts:
+      - -Dfishcompletiondir=no
+      - -Dzshcompletiondir=no
     sources:
       - type: archive
         url: https://github.com/bugaevc/wl-clipboard/archive/refs/tags/v2.2.1.tar.gz
