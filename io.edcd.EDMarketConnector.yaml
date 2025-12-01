@@ -12,15 +12,27 @@ finish-args:
     Games/Frontier\ Developments/Elite\ Dangerous
   - --filesystem=~/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/compatdata/359320/pfx/drive_c/users/steamuser/Saved\
     Games/Frontier\ Developments/Elite\ Dangerous
+  - --env=WAYLAND_DISPLAY=wayland-0
 cleanup:
   - /man
   - /include
   - /share/man
+  - /share/bash-completion
   - /lib/pkgconfig
 modules:
   - python3-requirements.yaml
 
   - python3-tkinter.yaml
+
+  - name: wl-clipboard
+    buildsystem: meson
+    config-opts:
+      - -Dfishcompletiondir=no
+      - -Dzshcompletiondir=no
+    sources:
+      - type: archive
+        url: https://github.com/bugaevc/wl-clipboard/archive/refs/tags/v2.2.1.tar.gz
+        sha256: 6eb8081207fb5581d1d82c4bcd9587205a31a3d47bea3ebeb7f41aa1143783eb
 
   - name: edmarketconnector
     buildsystem: simple
