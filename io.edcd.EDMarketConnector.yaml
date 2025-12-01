@@ -12,6 +12,7 @@ finish-args:
     Games/Frontier\ Developments/Elite\ Dangerous
   - --filesystem=~/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/compatdata/359320/pfx/drive_c/users/steamuser/Saved\
     Games/Frontier\ Developments/Elite\ Dangerous
+  - --env=WAYLAND_DISPLAY=wayland-0
 cleanup:
   - /man
   - /include
