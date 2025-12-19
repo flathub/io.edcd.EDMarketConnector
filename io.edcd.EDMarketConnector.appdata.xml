@@ -10,8 +10,11 @@
     <project_license>GPL-2.0-only</project_license>
 
     <releases>
-        <release version="5.13.3" date="2025-11-17">
+        <release version="6.0.0" date="2025-12-13">
             <description></description>
+        </release>
+        <release version="5.13.3" date="2025-11-17">
+            <description/>
         </release>
         <release version="5.13.2" date="2025-10-26">
             <description/>
@@ -70,9 +73,11 @@
     <screenshots>
         <screenshot type="default">
             <image>https://raw.githubusercontent.com/EDCD/EDMarketConnector/main/img/win_dark.png</image>
+            <caption>EDMarketConnector main window (dark theme)</caption>
         </screenshot>
         <screenshot>
             <image>https://raw.githubusercontent.com/EDCD/EDMarketConnector/main/img/UI-Athanasius-101-odyssey-docked-onfoot-cooled-down-l.png</image>
+            <caption>EDMarketConnector in use with Elite Dangerous Odyssey</caption>
         </screenshot>
     </screenshots>
 </component>
