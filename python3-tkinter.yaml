@@ -6,21 +6,25 @@ build-commands:
 sources:
   - type: git
     url: https://github.com/der-eismann/tkinter-standalone
-    commit: f003abf361a50e559fa05c634bdff72fa0d3fd21
+    commit: 180471fa8a40b08ac19861354fe404491c4f58fb
 modules:
-  - name: tcl8.6
+  - name: tcl9
+    config-opts:
+      - --disable-zipfs
     sources:
       - type: archive
-        url: https://prdownloads.sourceforge.net/tcl/tcl8.6.17-src.tar.gz
-        sha256: a3903371efcce8a405c5c245d029e9f6850258a60fa3761c4d58995610949b31
+        url: https://prdownloads.sourceforge.net/tcl/tcl9.0.2-src.tar.gz
+        sha256: e074c6a8d9ba2cddf914ba97b6677a552d7a52a3ca102924389a05ccb249b520
     subdir: unix
     post-install:
-      - chmod +w ${FLATPAK_DEST}/lib/libtcl8.6.so
-  - name: tk8.6
+      - chmod +w ${FLATPAK_DEST}/lib/libtcl9.0.so
+  - name: tk9
+    config-opts:
+      - --disable-zipfs
     sources:
       - type: archive
-        url: https://prdownloads.sourceforge.net/tcl/tk8.6.17-src.tar.gz
-        sha256: e4982df6f969c08bf9dd858a6891059b4a3f50dc6c87c10abadbbe2fc4838946
+        url: https://prdownloads.sourceforge.net/tcl/tk9.0.2-src.tar.gz
+        sha256: 76fb852b2f167592fe8b41aa6549ce4e486dbf3b259a269646600e3894517c76
     subdir: unix
     post-install:
-      - chmod +w ${FLATPAK_DEST}/lib/libtk8.6.so
+      - chmod +w ${FLATPAK_DEST}/lib/libtcl9tk9.0.so
