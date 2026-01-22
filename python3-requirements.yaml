@@ -29,15 +29,15 @@ modules:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "pybind11==3.0.1" --no-build-isolation
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "pillow==12.0.0" --no-build-isolation
+        --prefix=${FLATPAK_DEST} "pillow==12.1.0" --no-build-isolation
     sources:
       # Since pillow 12.0.0, pybind11 is a dependency that needs to be installed first
       - type: file
         url: https://files.pythonhosted.org/packages/cd/8a/37362fc2b949d5f733a8b0f2ff51ba423914cabefe69f1d1b6aab710f5fe/pybind11-3.0.1-py3-none-any.whl
         sha256: aa8f0aa6e0a94d3b64adfc38f560f33f15e589be2175e103c0a33c6bce55ee89
       - type: file
-        url: https://files.pythonhosted.org/packages/5a/b0/cace85a1b0c9775a9f8f5d5423c8261c858760e2466c79b2dd184638b056/pillow-12.0.0.tar.gz
-        sha256: 87d4f8125c9988bfbed67af47dd7a953e2fc7b0cc1e7800ec6d2080d490bb353
+        url: https://files.pythonhosted.org/packages/d0/02/d52c733a2452ef1ffcc123b68e6606d07276b0e358db70eabad7e40042b7/pillow-12.1.0.tar.gz
+        sha256: 5c5ae0a06e9ea030ab786b0251b32c7e4ce10e58d983c0d5c56029455180b5b9
   - name: python3-watchdog
     buildsystem: simple
     build-commands:
@@ -60,11 +60,11 @@ modules:
     buildsystem: simple
     build-commands:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "psutil==7.1.3" --no-build-isolation
+        --prefix=${FLATPAK_DEST} "psutil==7.2.1" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/e1/88/bdd0a41e5857d5d703287598cbf08dad90aed56774ea52ae071bae9071b6/psutil-7.1.3.tar.gz
-        sha256: 6c86281738d77335af7aec228328e944b30930899ea760ecf33a4dba66be5e74
+        url: https://files.pythonhosted.org/packages/73/cb/09e5184fb5fc0358d110fc3ca7f6b1d033800734d34cac10f4136cfac10e/psutil-7.2.1.tar.gz
+        sha256: f7583aec590485b43ca601dd9cea0dcd65bd7bb21d30ef4ddbf4ea6b5ed1bdd3
   - name: python3-tomli-w
     buildsystem: simple
     build-commands:

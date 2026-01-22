@@ -10,8 +10,11 @@
     <project_license>GPL-2.0-only</project_license>
 
     <releases>
-        <release version="6.0.2" date="2025-12-26">
+        <release version="6.1.0" date="2026-01-21">
             <description></description>
+        </release>
+        <release version="6.0.2" date="2025-12-26">
+            <description/>
         </release>
         <release version="6.0.1" date="2025-12-25">
             <description/>
@@ -71,7 +74,8 @@
     <url type="homepage">https://github.com/EDCD/EDMarketConnector</url>
     <url type="help">https://github.com/EDCD/EDMarketConnector/wiki</url>
     <url type="bugtracker">https://github.com/EDCD/EDMarketConnector/issues</url>
-    <url type="translate">https://marginal.oneskyapp.com/collaboration/project?id=52710</url>
+    <url type="translate">https://crowdin.com/project/edmarketconnector</url>
+    <url type="vcs-browser">https://github.com/EDCD/EDMarketConnector</url>
 
     <content_rating type="oars-1.1"/>
 
