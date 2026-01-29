@@ -10,8 +10,11 @@
     <project_license>GPL-2.0-only</project_license>
 
     <releases>
-        <release version="6.1.1" date="2026-01-25">
+        <release version="6.1.2" date="2026-01-29">
             <description></description>
+        </release>
+        <release version="6.1.1" date="2026-01-25">
+            <description/>
         </release>
         <release version="6.1.0" date="2026-01-21">
             <description/>
